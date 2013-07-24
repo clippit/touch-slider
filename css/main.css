@@ -1,0 +1,33 @@
+body,
+div,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  margin: 0 auto;
+  height: 179px;
+  width: 320px;
+}
+
+.slider {
+  overflow: hidden;
+  /*-webkit-perspective: 1000px;*/
+  /*-webkit-backface-visibility: hidden;*/
+  width: inherit;
+  height: inherit;
+}
+
+.slider ul {
+  list-style: none;
+  position: relative;
+  cursor: -webkit-grab;
+  -webkit-perspective: 0;
+  -webkit-backface-visibility: hidden;
+}
+
+.slider li {
+  position: absolute;
+}
