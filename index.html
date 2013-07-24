@@ -16,8 +16,34 @@
       <li><img src="img/img4.jpg" alt="Dean Hardscrabble" title="郝刻薄院长" width="320" height="179"></li>
     </ul>
     <div class="slider-title"></div>
-    <div class="slider-pagination"></div>
+    <ol class="slider-indicators"></ol>
   </div>
+</div>
+
+<div class="readme">
+  <h2>说明</h2>
+  <p>使用了ZeptoJS，在iOS Safari中可以正常使用。</p>
+  <h3>滑块部分</h3>
+  <p>滑块主要交互是监听 <code>touchstart</code>、<code>touchmove</code>、<code>touchend</code> 三个事件。
+    在不支持触摸的普通浏览器里分别使用了鼠标事件作为简单代替（代替的部分实现比较粗糙）。
+    图片的布局和滑动采用了 CSS <code>transform</code>属性。</p>
+  <h4><code>touchstart</code></h4>
+  <p>这里主要做了一些准备工作，并触发快速滑动的检测。
+    滑动的动作可以大致分为两种，一种是慢慢地滑动，此时是否翻页取决于停止触摸时是否已经滑过一半的位置；
+    另一种是快速滑动，即在短时间内「甩过」屏幕，此时无论滑动距离都应该切换到下一页。
+    这里使用了 <code>setTimeout</code> 检测快速滑动，如果在 300ms 内触发了 <code>touchend</code> 事件，即认为是快速滑动。</p>
+  <h4><code>touchmove</code></h4>
+  <p>此时根据滑动的距离设置滑块的 <code>transform</code> 属性。
+    当在第一张向左滑或最后一张像右滑时，不会像其他情况一样滑动1像素就移动1像素。
+    在这种情况下，滑动距离和实际移动距离的关系是：<code>y=min(x, x<sup>0.75</sup>)</code>。</p>
+  <h4><code>touchend</code></h4>
+  <p>滑动结束时首先会像前文所述一样判断是否要翻页，然后使用 CSS <code>transition</code> 属性给元素加上归位的动画效果。</p>
+  <h3>图片标题</h3>
+  <p>读取<code>&lt;img&gt;</code>标签的<code>title</code>属性。</p>
+  <h3>位置指示器</h3>
+  <p>小圆点根据图片数量生成，使用 <code>active</code> Class 进行背景图片的位置切换，以显示当前图片在整个滑块中的位置。</p>
+  <hr>
+  <p>张乐添</p>
 </div>
 
 <script src="js/zepto.js"></script>
