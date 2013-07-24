@@ -34,7 +34,7 @@
     这里使用了 <code>setTimeout</code> 检测快速滑动，如果在 300ms 内触发了 <code>touchend</code> 事件，即认为是快速滑动。</p>
   <h4><code>touchmove</code></h4>
   <p>此时根据滑动的距离设置滑块的 <code>transform</code> 属性。
-    当在第一张向左滑或最后一张像右滑时，不会像其他情况一样滑动1像素就移动1像素。
+    当在第一张向左滑或最后一张向右滑时，不会像其他情况一样滑动1像素就移动1像素。
     在这种情况下，滑动距离和实际移动距离的关系是：<code>y=min(x, x<sup>0.75</sup>)</code>。</p>
   <h4><code>touchend</code></h4>
   <p>滑动结束时首先会像前文所述一样判断是否要翻页，然后使用 CSS <code>transition</code> 属性给元素加上归位的动画效果。</p>
@@ -46,7 +46,7 @@
   <p>张乐添</p>
 </div>
 
-<script src="js/zepto.js"></script>
+<script src="js/zepto.min.js"></script>
 <script src="js/main.js"></script>
 <script>
   $('.slider').touchSlider();
